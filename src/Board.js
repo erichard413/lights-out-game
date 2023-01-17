@@ -28,7 +28,7 @@ import {v4 as uuidv4} from 'uuid';
  *
  **/
 
-function Board({ nrows=6, ncols=3, chanceLightStartsOn=.30 }) {
+function Board({ nrows=6, ncols=3, chanceLightStartsOn=.3 }) {
   const [board, setBoard] = useState(createBoard());
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
@@ -94,7 +94,7 @@ function Board({ nrows=6, ncols=3, chanceLightStartsOn=.30 }) {
     <table className="Board">
       <tbody>
         {board.map((r, rIdx) => (
-        <tr key={uuidv4()}>
+        <tr id={rIdx} key={uuidv4()}>
           {r.map((c, cIdx) => 
           <Cell key={uuidv4()} flipCellsAroundMe={()=> flipCellsAround(`${rIdx}-${cIdx}`)} isLit={c}/>
           )}
